@@ -37,13 +37,12 @@
     "copyhtml": "copy 'src/app/cron-editor/*.html' './components/cron-editor/'",
     "copycss": "copy 'src/app/cron-editor/*.css' './components/cron-editor/'",
     "pack": "ng-packagr -p package.json",
-    "publish": "ng build && ng-packagr -p package.json && cd dist && npm pack"
+    "publish": "ng build && ng-packagr -p package.json && cd dist"
   },
   "dependencies": {
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@alexandrupaul7/ngx-cron-editor": "0.5.2",
     "@angular-devkit/build-angular": "^0.1000.4",
     "@angular-devkit/build-ng-packagr": "~0.1000.4",
     "@angular/animations": "^10.0.6",
