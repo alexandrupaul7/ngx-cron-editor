@@ -20,22 +20,41 @@ export class AppComponent implements OnInit, OnDestroy {
     formRadioClass: 'cron-editor-radio',
     formCheckboxClass: 'cron-editor-checkbox',
 
-    defaultTime: '00:00:00',
+    defaultTime: '10:00:00',
 
-    hideMinutesTab: false,
-    hideHourlyTab: false,
-    hideDailyTab: false,
-    hideWeeklyTab: false,
+    hideMinutesTab: true,
+    hideHourlyTab: true,
+    hideDailyTab: true,
+    hideWeeklyTab: true,
     hideMonthlyTab: false,
     hideYearlyTab: false,
-    hideAdvancedTab: false,
+    hideAdvancedTab: true,
     hideSpecificWeekDayTab: false,
     hideSpecificMonthWeekTab: false,
 
     use24HourTime: true,
     hideSeconds: false,
+    cronFlavor: CronFlavor.standard,
 
-    cronFlavor: CronFlavor.standard
+    //translate
+    tLanguage:'ro',
+    tYearly: 'Anual',
+    tMonthly:'Lunar',
+    tOnThe: 'În',
+    tOnThe2: 'în',
+    tDay: 'ziua',
+    tOfEvery: 'o dată la',
+    tMonth: 'lună',
+    tMonths: 'luni',
+    tAt: 'la ora ',
+    tOf: 'de',
+    tOf2: 'din',
+    tEvery: 'În fiecare',
+
+
+    tJanuary: 'Ianuarie',
+
+    
   };
 
   cronFlavorValues = CronFlavor;

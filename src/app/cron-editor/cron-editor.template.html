@@ -136,107 +136,110 @@
         </div>
 
       </mat-tab>
-      <mat-tab label="Monthly" *ngIf="!options.hideMonthlyTab">
+      <mat-tab [label]="options.tMonthly || Monthly" *ngIf="!options.hideMonthlyTab">
         <div class="form-group">
           <mat-radio-group [(ngModel)]="state.monthly.subTab">
             <mat-radio-button name="monthly-radio" value="specificDay" [disabled]="disabled" (change)="regenerateCron()"
-              [ngClass]="state.formRadioClass">
+                              [ngClass]="state.formRadioClass">
             </mat-radio-button>
           </mat-radio-group>
-          On the
+          {{options.tOnThe || 'On the'}} {{options.tDay}}
           <mat-form-field *ngIf="isCronFlavorQuartz">
             <mat-select class="month-days" [disabled]="disabled || activeTab !== 'monthly' || state.monthly.subTab !== 'specificDay'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificDay.day" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificDay.day" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let monthDaysWithLast of selectOptions.monthDaysWithLasts" [value]="monthDaysWithLast">
                 {{monthDayDisplay(monthDaysWithLast)}}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field *ngIf="isCronFlavorStandard">
+          <mat-form-field *ngIf="isCronFlavorStandard" style="width:50px">
             <mat-select class="month-days" [disabled]="disabled || activeTab !== 'monthly' || state.monthly.subTab !== 'specificDay'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificDay.day" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificDay.day" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let monthDaysWithOutLast of selectOptions.monthDaysWithOutLasts" [value]="monthDaysWithOutLast">
                 {{monthDayDisplay(monthDaysWithOutLast)}}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          of every
-          <mat-form-field>
+          {{options.tOfEvery || 'of every'}} 
+          <mat-form-field style="width:50px">
             <mat-select class="months-small" [disabled]="disabled || activeTab !== 'monthly' || state.monthly.subTab !== 'specificDay'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificDay.months" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificDay.months" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let month of selectOptions.months" [value]="month">
                 {{month}}
               </mat-option>
             </mat-select>
           </mat-form-field>
+          <span *ngIf="state.monthly.specificDay.months == 1">{{options.tMonth || 'month'}} {{options.tAt || 'at'}}</span>
+          <span *ngIf="state.monthly.specificDay.months > 1">{{options.tMonths || 'months'}} {{options.tAt || 'at'}}</span>
 
-          month(s) at
           <cron-time-picker [disabled]="disabled || activeTab !== 'monthly' || state.monthly.subTab !== 'specificDay'"
-            (onChange)="regenerateCron()" [(model)]="state.monthly.specificDay" [selectClass]="options.formSelectClass"
-            [use24HourTime]="options.use24HourTime" [hideSeconds]="options.hideSeconds || !isCronFlavorQuartz">
+                            (onChange)="regenerateCron()" [(model)]="state.monthly.specificDay" [selectClass]="options.formSelectClass"
+                            [use24HourTime]="options.use24HourTime" [hideSeconds]="options.hideSeconds || !isCronFlavorQuartz">
           </cron-time-picker>
         </div>
         <div class="" *ngIf="!options.hideSpecificWeekDayTab">
           <mat-radio-group [(ngModel)]="state.monthly.subTab">
             <mat-radio-button name="monthly-radio" value="specificWeekDay" [disabled]="disabled" (change)="regenerateCron()"
-              [ngClass]="state.formRadioClass">
+                              [ngClass]="state.formRadioClass">
             </mat-radio-button>
           </mat-radio-group>
-          On the
-          <mat-form-field>
+          {{options.tOnThe ||  'On the'}}
+          <mat-form-field style="width:100px">
             <mat-select class="day-order-in-month" [disabled]="disabled || activeTab !== 'monthly' || state.monthly.subTab !== 'specificWeekDay'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificWeekDay.monthWeek" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificWeekDay.monthWeek" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let monthWeek of selectOptions.monthWeeks" [value]="monthWeek">
                 {{monthWeekDisplay(monthWeek)}}
               </mat-option>
             </mat-select>
           </mat-form-field>
+          {{options.tOf}}
           <mat-form-field>
             <mat-select class="week-days" [disabled]="disabled || activeTab !== 'monthly' || state.monthly.subTab !== 'specificWeekDay'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificWeekDay.day" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificWeekDay.day" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let day of selectOptions.days" [value]="day">
                 {{dayDisplay(day)}}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          of every
-          <mat-form-field>
+          {{options.tOfEvery ||  'of every'}}
+          <mat-form-field style="width:50px">
             <mat-select class="months-small" [disabled]="disabled || activeTab !== 'monthly' || state.monthly.subTab !== 'specificWeekDay'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificWeekDay.months" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.monthly.specificWeekDay.months" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let month of selectOptions.months" [value]="month">
                 {{month}}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          month(s) at
+          <span *ngIf="state.monthly.specificWeekDay.months == 1">{{options.tMonth || 'month'}} {{options.tAt || 'at'}}</span>
+          <span *ngIf="state.monthly.specificWeekDay.months > 1">{{options.tMonths || 'months'}} {{options.tAt || 'at'}}</span>
           <cron-time-picker [disabled]="disabled || activeTab !== 'monthly' || state.monthly.subTab !== 'specificWeekDay'"
-            (onChange)="regenerateCron()" [(model)]="state.monthly.specificWeekDay" [selectClass]="options.formSelectClass"
-            [use24HourTime]="options.use24HourTime" [hideSeconds]="options.hideSeconds || !isCronFlavorQuartz">
+                            (onChange)="regenerateCron()" [(model)]="state.monthly.specificWeekDay" [selectClass]="options.formSelectClass"
+                            [use24HourTime]="options.use24HourTime" [hideSeconds]="options.hideSeconds || !isCronFlavorQuartz">
           </cron-time-picker>
         </div>
       </mat-tab>
-      <mat-tab label="Yearly" *ngIf="!options.hideYearlyTab">
+      <mat-tab [label]="options.tYearly || 'Yearly'" *ngIf="!options.hideYearlyTab">
         <div class="form-group">
           <mat-radio-group [(ngModel)]="state.yearly.subTab">
             <mat-radio-button name="yearly-radio" value="specificMonthDay" [disabled]="disabled" (change)="regenerateCron()"
-              [ngClass]="state.formRadioClass">
+                              [ngClass]="state.formRadioClass">
             </mat-radio-button>
           </mat-radio-group>
-          Every
+          {{ options.tEvery ||'Every'}}
           <mat-form-field>
             <mat-select class="months" [disabled]="disabled || activeTab !== 'yearly' || state.yearly.subTab !== 'specificMonthDay'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthDay.month" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthDay.month" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let month of selectOptions.months" [value]="month">
                 {{monthDisplay(month)}}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          on the
+          {{options.tOnThe2 || 'on the'}} {{options.tDay}}
           <mat-form-field *ngIf="isCronFlavorQuartz" class="month-days">
             <mat-select [disabled]="disabled || activeTab !== 'yearly' || state.yearly.subTab !== 'specificMonthDay'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthDay.day" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthDay.day" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let monthDaysWithLast of selectOptions.monthDaysWithLasts" [value]="monthDaysWithLast">
                 {{monthDayDisplay(monthDaysWithLast)}}
               </mat-option>
@@ -244,54 +247,55 @@
           </mat-form-field>
           <mat-form-field *ngIf="isCronFlavorStandard">
             <mat-select class="month-days" [disabled]="disabled || activeTab !== 'yearly' || state.yearly.subTab !== 'specificMonthDay'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthDay.day" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthDay.day" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let monthDaysWithOutLast of selectOptions.monthDaysWithOutLasts" [value]="monthDaysWithOutLast">
                 {{monthDayDisplay(monthDaysWithOutLast)}}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          at
+          {{options.tAt || 'at'}}
           <cron-time-picker [disabled]="disabled || activeTab !== 'yearly' || state.yearly.subTab !== 'specificMonthDay'"
-            (onChange)="regenerateCron()" [(model)]="state.yearly.specificMonthDay" [selectClass]="options.formSelectClass"
-            [use24HourTime]="options.use24HourTime" [hideSeconds]="options.hideSeconds || !isCronFlavorQuartz">
+                            (onChange)="regenerateCron()" [(model)]="state.yearly.specificMonthDay" [selectClass]="options.formSelectClass"
+                            [use24HourTime]="options.use24HourTime" [hideSeconds]="options.hideSeconds || !isCronFlavorQuartz">
           </cron-time-picker>
         </div>
         <div class="" *ngIf="!options.hideSpecificMonthWeekTab">
           <mat-radio-group [(ngModel)]="state.yearly.subTab">
             <mat-radio-button name="yearly-radio" value="specificMonthWeek" [disabled]="disabled" (change)="regenerateCron()"
-              [ngClass]="state.formRadioClass">
+                              [ngClass]="state.formRadioClass">
             </mat-radio-button>
           </mat-radio-group>
-          On the
+          {{options.tOnThe || 'On the'}}
           <mat-form-field>
             <mat-select class="day-order-in-month" [disabled]="disabled || activeTab !== 'yearly' || state.yearly.subTab !== 'specificMonthWeek'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthWeek.monthWeek" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthWeek.monthWeek" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let monthWeek of selectOptions.monthWeeks" [value]="monthWeek">
                 {{monthWeekDisplay(monthWeek)}}
               </mat-option>
             </mat-select>
           </mat-form-field>
+          {{options.tOf}}
           <mat-form-field>
             <mat-select class="week-days" [disabled]="disabled || activeTab !== 'yearly' || state.yearly.subTab !== 'specificMonthWeek'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthWeek.day" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthWeek.day" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let day of selectOptions.days" [value]="day">
                 {{dayDisplay(day)}}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          of
+          {{options.tOf2 || 'of'}}
           <mat-form-field>
             <mat-select class="months" [disabled]="disabled || activeTab !== 'yearly' || state.yearly.subTab !== 'specificMonthWeek'"
-              (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthWeek.month" [ngClass]="options.formSelectClass">
+                        (selectionChange)="regenerateCron()" [(ngModel)]="state.yearly.specificMonthWeek.month" [ngClass]="options.formSelectClass">
               <mat-option *ngFor="let month of selectOptions.months" [value]="month">
                 {{monthDisplay(month)}}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          at
+          {{options.tAt || 'at'}}
           <cron-time-picker [disabled]="disabled || activeTab !== 'yearly' || state.yearly.subTab !== 'specificMonthWeek'"
-            (onChange)="regenerateCron()" [(model)]="state.yearly.specificMonthWeek" [selectClass]="options.formSelectClass"
-            [use24HourTime]="options.use24HourTime" [hideSeconds]="options.hideSeconds || !isCronFlavorQuartz">
+                            (onChange)="regenerateCron()" [(model)]="state.yearly.specificMonthWeek" [selectClass]="options.formSelectClass"
+                            [use24HourTime]="options.use24HourTime" [hideSeconds]="options.hideSeconds || !isCronFlavorQuartz">
           </cron-time-picker>
         </div>
       </mat-tab>

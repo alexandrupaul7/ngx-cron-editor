@@ -1,7 +1,7 @@
 import {Component, Input, Output, OnInit, OnChanges, SimpleChanges, EventEmitter} from '@angular/core';
 
 import {CronOptions} from './CronOptions';
-import {Days, MonthWeeks, Months, CronFlavor} from './enums';
+import {Days, MonthWeeks, Months,MonthsRO, CronFlavor, MonthWeeksRO, DaysRO} from './enums';
 
 @Component({
   selector: 'cron-editor',
@@ -144,15 +144,26 @@ export class CronGenComponent implements OnInit, OnChanges {
   }
 
   public dayDisplay(day: string): string {
-    return Days[day];
+    var r = Days[day];
+    if (this.options.tLanguage == 'ro')
+      r = DaysRO[day];
+    return r;
   }
 
   public monthWeekDisplay(monthWeekNumber: number): string {
-    return MonthWeeks[monthWeekNumber];
+    var r = MonthWeeks[monthWeekNumber];
+    if (this.options.tLanguage == 'ro') {
+      r = MonthWeeksRO[monthWeekNumber];
+    }
+    return r;
   }
 
   public monthDisplay(month: number): string {
-    return Months[month];
+    var r = Months[month];
+    if (this.options.tLanguage == 'ro') {
+      r = MonthsRO[month];
+    }    
+    return r;
   }
 
   public monthDayDisplay(month: string): string {
@@ -163,7 +174,12 @@ export class CronGenComponent implements OnInit, OnChanges {
     } else if (month === '1W') {
       return 'First Weekday';
     } else {
-      return `${month}${this.getOrdinalSuffix(month)} day`;
+      if (this.options.tLanguage == 'ro') {
+        return month;
+      }
+      else {
+        return `${month}${this.getOrdinalSuffix(month)} day`;
+      }
     }
   }
 
