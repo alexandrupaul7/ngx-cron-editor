@@ -37,7 +37,7 @@
     "copyhtml": "copy 'src/app/cron-editor/*.html' './components/cron-editor/'",
     "copycss": "copy 'src/app/cron-editor/*.css' './components/cron-editor/'",
     "pack": "ng-packagr -p package.json",
-    "publish": "ng build && ng-packagr -p package.json && cd dist && npm publish"
+    "publish": "ng build && ng-packagr -p package.json && cd dist && npm pack"
   },
   "dependencies": {
     "tslib": "^2.0.0"
