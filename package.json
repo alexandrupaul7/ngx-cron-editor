@@ -1,5 +1,5 @@
 {
-  "name": "@zapinfo/ngx-cron-editor",
+  "name": "@alexandrupaul7/ngx-cron-editor",
   "description": "A cron expression generator for Angular 9+",
   "author": "Ryan Morlok",
   "contributors": [
@@ -15,12 +15,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/zapinfo/ngx-cron-editor"
+    "url": "git://github.com/alexandrupaul7/ngx-cron-editor"
   },
   "bugs": {
-    "url": "https://github.com/zapinfo/ngx-cron-editor/issues"
+    "url": "https://github.com/alexandrupaul7/ngx-cron-editor/issues"
   },
-  "homepage": "https://github.com/zapinfo/ngx-cron-editor",
+  "homepage": "https://github.com/alexandrupaul7/ngx-cron-editor",
   "keywords": [
     "angular",
     "cron",
