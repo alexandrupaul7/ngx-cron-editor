@@ -1,14 +1,15 @@
 {
   "name": "@alexandrupaul7/ngx-cron-editor",
-  "description": "A cron expression generator for Angular 9+",
+  "description": "A cron expression generator for Angular 10+",
   "author": "Ryan Morlok",
   "contributors": [
     "Claudiu Constantin",
     "Eduardo Sarmiento",
     "Håvard D. Johansen",
-    "Ryan Morlok"
+    "Ryan Morlok",
+    "Alexandru Paul-Papuc"
   ],
-  "version": "0.4.15",
+  "version": "0.5.4",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
@@ -42,6 +43,7 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@alexandrupaul7/ngx-cron-editor": "0.5.2",
     "@angular-devkit/build-angular": "^0.1000.4",
     "@angular-devkit/build-ng-packagr": "~0.1000.4",
     "@angular/animations": "^10.0.6",

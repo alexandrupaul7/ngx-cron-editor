@@ -136,7 +136,7 @@
         </div>
 
       </mat-tab>
-      <mat-tab [label]="options.tMonthly || Monthly" *ngIf="!options.hideMonthlyTab">
+      <mat-tab [label]="options.tMonthly || 'Monthly'" *ngIf="!options.hideMonthlyTab">
         <div class="form-group">
           <mat-radio-group [(ngModel)]="state.monthly.subTab">
             <mat-radio-button name="monthly-radio" value="specificDay" [disabled]="disabled" (change)="regenerateCron()"
