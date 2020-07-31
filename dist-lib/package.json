@@ -1,0 +1,41 @@
+{
+  "name": "@alexandrupaul7/ngx-cron-editor",
+  "description": "A cron expression generator for Angular 10+",
+  "author": "Ryan Morlok",
+  "contributors": [
+    "Claudiu Constantin",
+    "Eduardo Sarmiento",
+    "Håvard D. Johansen",
+    "Ryan Morlok",
+    "Alexandru Paul-Papuc"
+  ],
+  "version": "0.6.6",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alexandrupaul7/ngx-cron-editor"
+  },
+  "bugs": {
+    "url": "https://github.com/alexandrupaul7/ngx-cron-editor/issues"
+  },
+  "homepage": "https://github.com/alexandrupaul7/ngx-cron-editor",
+  "keywords": [
+    "angular",
+    "cron",
+    "cron-expression"
+  ],
+  "main": "bundles/alexandrupaul7-ngx-cron-editor.umd.js",
+  "module": "fesm2015/alexandrupaul7-ngx-cron-editor.js",
+  "es2015": "fesm2015/alexandrupaul7-ngx-cron-editor.js",
+  "esm2015": "esm2015/alexandrupaul7-ngx-cron-editor.js",
+  "fesm2015": "fesm2015/alexandrupaul7-ngx-cron-editor.js",
+  "typings": "alexandrupaul7-ngx-cron-editor.d.ts",
+  "metadata": "alexandrupaul7-ngx-cron-editor.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

@@ -9,7 +9,7 @@
     "Ryan Morlok",
     "Alexandru Paul-Papuc"
   ],
-  "version": "0.6.0",
+  "version": "0.6.8",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
@@ -30,17 +30,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
+    "build": "ng build --prod",
+    "build.ci": "npm run build -- --progress=false",
+    "test": "ng test --watch=false --code-coverage",
+    "test.ci": "npm run test -- --progress=false --watch=false",
+    "lint": "ng lint --tsConfig=src/tsconfig.app.json",
     "e2e": "ng e2e",
-    "copyhtml": "copy 'src/app/cron-editor/*.html' './components/cron-editor/'",
-    "copycss": "copy 'src/app/cron-editor/*.css' './components/cron-editor/'",
-    "pack": "ng-packagr -p package.json",
-    "publish": "ng build && ng-packagr -p package.json && cd dist"
-  },
-  "dependencies": {
-    "tslib": "^2.0.0"
+    "build-lib": "ng-packagr -p package.json"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1000.4",
@@ -73,30 +69,15 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "ng-packagr": "^10.0.0",
     "protractor": "~7.0.0",
-    "rxjs": "6.5.5",
+    "rxjs": "6.6.0",
     "ts-node": "^8.8.2",
     "tslint": "~6.1.0",
     "typescript": "~3.9.7",
     "zone.js": "^0.10.3"
   },
-  "peerDependencies": {
-    "core-js": "^3.6.5",
-    "rxjs": "6.5.5",
-    "zone.js": "^0.10.3"
-  },
   "ngPackage": {
     "lib": {
-      "entryFile": "index.ts"
+      "entryFile": "src/app/cron-editor/public_api.ts"
     }
-  },
-  "main": "bundles/ngx-cron-editor.umd.js",
-  "module": "fesm5/ngx-cron-editor.js",
-  "es2015": "fesm2015/ngx-cron-editor.js",
-  "esm5": "esm5/ngx-cron-editor.js",
-  "esm2015": "esm2015/ngx-cron-editor.js",
-  "fesm5": "fesm5/ngx-cron-editor.js",
-  "fesm2015": "fesm2015/ngx-cron-editor.js",
-  "typings": "ngx-cron-editor.d.ts",
-  "metadata": "ngx-cron-editor.metadata.json",
-  "sideEffects": false
+  }
 }
