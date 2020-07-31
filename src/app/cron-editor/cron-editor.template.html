@@ -57,8 +57,8 @@
       </mat-tab>
       <mat-tab label="Daily" *ngIf="!options.hideDailyTab">
         <div class="form-group">
-          <mat-radio-group [(ngModel)]="state.daily.subTab">
-            <mat-radio-button name="daily-radio" value="everyDays" [disabled]="disabled" (change)="regenerateCron()"
+          <mat-radio-group [(ngModel)]="state.daily.subTab" (change)="regenerateCron()">
+            <mat-radio-button name="daily-radio" value="everyDays" [disabled]="disabled" 
               [ngClass]="state.formRadioClass" checked="checked">
             </mat-radio-button>
           </mat-radio-group>
@@ -81,8 +81,8 @@
         </div>
 
         <div class="form-group">
-          <mat-radio-group [(ngModel)]="state.daily.subTab">
-            <mat-radio-button name="daily-radio" value="everyWeekDay" [disabled]="disabled" (change)="regenerateCron()"
+          <mat-radio-group [(ngModel)]="state.daily.subTab" (change)="regenerateCron()">
+            <mat-radio-button name="daily-radio" value="everyWeekDay" [disabled]="disabled" 
               [ngClass]="state.formRadioClass">
             </mat-radio-button>
           </mat-radio-group>
@@ -138,8 +138,8 @@
       </mat-tab>
       <mat-tab [label]="options.tMonthly || 'Monthly'" *ngIf="!options.hideMonthlyTab">
         <div class="form-group">
-          <mat-radio-group [(ngModel)]="state.monthly.subTab">
-            <mat-radio-button name="monthly-radio" value="specificDay" [disabled]="disabled" (change)="regenerateCron()"
+          <mat-radio-group [(ngModel)]="state.monthly.subTab" (change)="regenerateCron()">
+            <mat-radio-button name="monthly-radio" value="specificDay" [disabled]="disabled" 
                               [ngClass]="state.formRadioClass">
             </mat-radio-button>
           </mat-radio-group>
@@ -180,8 +180,8 @@
           </cron-time-picker>
         </div>
         <div class="" *ngIf="!options.hideSpecificWeekDayTab">
-          <mat-radio-group [(ngModel)]="state.monthly.subTab">
-            <mat-radio-button name="monthly-radio" value="specificWeekDay" [disabled]="disabled" (change)="regenerateCron()"
+          <mat-radio-group [(ngModel)]="state.monthly.subTab" (change)="regenerateCron()">
+            <mat-radio-button name="monthly-radio" value="specificWeekDay" [disabled]="disabled" 
                               [ngClass]="state.formRadioClass">
             </mat-radio-button>
           </mat-radio-group>
@@ -222,8 +222,8 @@
       </mat-tab>
       <mat-tab [label]="options.tYearly || 'Yearly'" *ngIf="!options.hideYearlyTab">
         <div class="form-group">
-          <mat-radio-group [(ngModel)]="state.yearly.subTab">
-            <mat-radio-button name="yearly-radio" value="specificMonthDay" [disabled]="disabled" (change)="regenerateCron()"
+          <mat-radio-group [(ngModel)]="state.yearly.subTab" (change)="regenerateCron()">
+            <mat-radio-button name="yearly-radio" value="specificMonthDay" [disabled]="disabled" 
                               [ngClass]="state.formRadioClass">
             </mat-radio-button>
           </mat-radio-group>
@@ -260,8 +260,8 @@
           </cron-time-picker>
         </div>
         <div class="" *ngIf="!options.hideSpecificMonthWeekTab">
-          <mat-radio-group [(ngModel)]="state.yearly.subTab">
-            <mat-radio-button name="yearly-radio" value="specificMonthWeek" [disabled]="disabled" (change)="regenerateCron()"
+          <mat-radio-group [(ngModel)]="state.yearly.subTab" (change)="regenerateCron()">
+            <mat-radio-button name="yearly-radio" value="specificMonthWeek" [disabled]="disabled" 
                               [ngClass]="state.formRadioClass">
             </mat-radio-button>
           </mat-radio-group>
