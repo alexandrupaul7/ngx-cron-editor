@@ -9,7 +9,7 @@
     "Ryan Morlok",
     "Alexandru Paul-Papuc"
   ],
-  "version": "0.6.8",
+  "version": "0.6.9",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
